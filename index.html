@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Voter</title>
+		<meta name="description" content="Dead simple digital voting cards" />
+		<meta name="author" content="Reimar Servas" />
+		<style>
+			html,
+			body {
+				background: black;
+				margin: 0;
+				padding: 0;
+			}
+
+			body {
+				display: flex;
+				overflow: auto;
+				scroll-snap-type: x mandatory;
+				width: 100vw;
+			}
+
+			.card {
+				height: 100vh;
+				min-width: 100vw;
+				scroll-snap-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			(function () {
+				const urlParams = new URLSearchParams(window.location.search);
+				const defaultColors = ["FF6332", "36A800"];
+				const colors = urlParams.has("colors") ? urlParams.get("colors").split(",") : defaultColors;
+
+				colors.forEach((color) => {
+					let $card = document.createElement("div");
+
+					$card.className = "card";
+					$card.style.backgroundColor = "#" + color;
+
+					document.body.append($card);
+				});
+			})();
+		</script>
+	</body>
+</html>
