@@ -18,6 +18,7 @@ To change the colors or number of cards, you need to change a part of the url (y
 
 ## Planned Features
 
+- Proper branding (logo, icon, etc.)
 - Add customizable text labels or emojis
 - Add instructions and templates
 - Synchronize votes/cards with a statistics page
