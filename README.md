@@ -2,14 +2,14 @@
 
 Voter creates dead-simple digital voting cards. Just open Voter in your mobile browser. By default, your phone will display two _swipeable_ cards, one red, one green. Just check it out yourself:
 
-QR code: ![QR code](https://reimar.github.io/voter/assets/qr-code.svg)
-URL: https://reimar.github.io/voter/
+![QR code](https://reimar.github.io/voter/assets/qr-code.svg)<br />
+https://reimar.github.io/voter/
 
 To change the colors or number of cards, you need to change a part of the url (you might also call it the website’s _address_). Add a comma-separated list of hexadecimal color values (eg. `000000` for _black_) and Voter will create a card for each color. Here are some examples:
 
-1. `index.html?colors=FFFFFF,000000` — a black and a white card
-2. `index.html?colors=2541F7,F75765,F7C625` — a blue, a red and a yellow card
-3. `index.html?colors=E37CF7,B160C1,6E3C78,331C38` — four purple cards of different shades
+1. https://reimar.github.io/voter/?colors=FFFFFF,000000 — a black and a white card
+2. https://reimar.github.io/voter/?colors=2541F7,F75765,F7C625 — a blue, a red and a yellow card
+3. https://reimar.github.io/voter/?colors=E37CF7,B160C1,6E3C78,331C38 — four purple cards of different shades
 
 ## Tips
 
