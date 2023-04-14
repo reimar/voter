@@ -24,14 +24,17 @@ Yes. You can also add emojis. Add a list of emojis which will map to your list o
 3. https://reimar.github.io/voter/?colors=2541F7,F75765,F7C625&symbols=🏄,,🍔 — a blue card with a surfer emoji, a red card with no emoji and a yellow card with a hamburger emoji
 4. https://reimar.github.io/voter/?colors=E37CF7,B160C1,6E3C78,331C38&symbols=1️⃣,2️⃣,3️⃣,4️⃣ — four purple cards of different shades, each with a keycap digit emoji
 
+### Enable Counter Display
+
+If you need to count the voting cards, you can _note_ your counts per card by enabling the counter:
+
+1. https://reimar.github.io/voter/?counter — enables the counter with the default cards
+2. https://reimar.github.io/voter/?colors=000000,FFFFFF&counter — or add `&counter` (prefereably) to the end of your custom url
+
+Wipe up or down on the counter to set a count. Once you refresh the page, your count will reset.
+
 ## Tips
 
 - Use https://color.adobe.com/create/color-wheel to create colors for your set of cards. The mumbers after the hash signs (_#_) are what you need.
 - Use https://express.adobe.com/tools/qr-code-generator to create a QR code for your url to easily share it.
 - Head over to https://unicode.org/emoji/charts/full-emoji-list.html to copy & paste emojis.
-
-## Planned Features
-
-- Proper branding (logo, icon, etc.)
-- Add instructions and templates
-- Synchronize votes/cards with a statistics page

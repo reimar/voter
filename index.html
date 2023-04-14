@@ -31,6 +31,7 @@
 				scroll-snap-align: center;
 				display: flex;
 				align-items: center;
+				position: relative;
 			}
 
 			.symbol {
@@ -38,11 +39,40 @@
 				text-align: center;
 				width: 100%;
 			}
+
+			.counter {
+				background: #fff;
+				border-radius: 24px;
+				bottom: 24px;
+				display: flex;
+				flex-direction: column;
+				left: 24px;
+				overflow: scroll;
+				position: absolute;
+				right: 24px;
+				scroll-snap-type: y mandatory;
+				top: 75vh;
+			}
+
+			.counter::-webkit-scrollbar {
+				display: none;
+			}
+
+			.counterDigit {
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+				font-size: 10vh;
+				height: 100%;
+				scroll-snap-align: center;
+				text-align: center;
+			}
 		</style>
 	</head>
 	<body>
 		<script>
 			(function () {
+				// settings
+				const counterMaxVal = 100;
+
 				// read and interpret url params
 				const urlParams = new URLSearchParams(window.location.search);
 
@@ -53,17 +83,40 @@
 				// symbols
 				const symbols = urlParams.has("symbols") ? urlParams.get("symbols").split(",") : false;
 
+				// counter
+				const showCounter = urlParams.has("counter") ? true : false;
+
 				// create cards
 				colors.forEach((color, index) => {
 					let $card = document.createElement("div");
+					let $markup = ``;
 
 					$card.className = "card";
 					$card.style.backgroundColor = "#" + color;
 					document.body.append($card);
 
 					if (symbols) {
-						$card.innerHTML = `<span class="symbol">${symbols[index]}</span>`;
+						$markup += `<span class="symbol">${symbols[index]}</span>`;
 					}
+
+					if (showCounter) {
+						$markup += `
+							<div class="counter">
+								${(() => {
+									let $markUp = ``;
+									let n = 1;
+
+									while (n <= counterMaxVal) {
+										$markUp += `<p class="counterDigit">${n}</p>`;
+										n++;
+									}
+									return $markUp;
+								})()}
+							</button>
+						`;
+					}
+
+					$card.innerHTML = $markup;
 				});
 			})();
 		</script>
