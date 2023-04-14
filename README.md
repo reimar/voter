@@ -20,7 +20,7 @@ To change the colors (and number of cards), you need to change a part of the url
 Yes. You can also add emojis. Add a list of emojis which will map to your list of colors. It’s best to explain via examples:
 
 1. https://reimar.github.io/voter/?colors=FF6332,36A800&symbols=👎,👍 — a red card with thumbs-down emoji and a green card with a thumbs-up emoji
-2. https://reimar.github.io/voter/?colors=000000,FFFFFF&symbols=💀,👼 — a black card with a skull emoji and a white card with a baby angel emoji
+2. https://reimar.github.io/voter/?colors=000000,FFFFFF&symbols=💀,👻 — a black card with a skull emoji and a white card with a ghost emoji
 3. https://reimar.github.io/voter/?colors=2541F7,F75765,F7C625&symbols=🏄,,🍔 — a blue card with a surfer emoji, a red card with no emoji and a yellow card with a hamburger emoji
 4. https://reimar.github.io/voter/?colors=E37CF7,B160C1,6E3C78,331C38&symbols=1️⃣,2️⃣,3️⃣,4️⃣ — four purple cards of different shades, each with a keycap digit emoji
 
