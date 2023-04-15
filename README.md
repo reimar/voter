@@ -2,7 +2,6 @@
 
 Voter creates dead-simple digital voting cards. Just open Voter in your mobile browser. By default, your phone will display two _swipeable_ cards, one red, one green. Just check it out yourself:
 
-![QR code](https://reimar.github.io/voter/assets/qr-code.svg)<br />
 https://reimar.github.io/voter/
 
 ## Why?
