@@ -11,9 +11,34 @@ I needed a simple solution for an upcoming workshop to let the participants answ
 
 ## Customization
 
+### Concept
+
+You customize Voter through the url in your browser’s address bar. Look at this absolutely over-ambitious ascii drawing I made for you:
+
+```
+           ┌─────────────────────────────────┬───────┬───────────┬─┬───────┬──────┬─┬───────┐
+           │ https://reimar.github.io/voter/?│colors=│black,white│&│labels=│no,yes│&│counter│
+           └─────────────────────────────────┴───────┴───────────┴─┴───────┴──────┴─┴───────┘
+                            │                    │         │      │    │       │   │    │    ┌─▶ this keyword enables
+      ┌─────────────────────┘                    │         │      ├────┼───────┼───┘    │    │   the counter display
+      ▼                                          │         │      │    │       │        └────┘
+                 ┌───────────────────────────────┘         │   ┌──┘    │       └─────────────────────┐
+this part        │                                         │   │       │                             │
+never changes    │             ┌───────────────────────────┘   │       └────────┐                    │
+                 │             │                               │                │                    │
+                 ▼             │                               ▼                │                    ▼
+                               │                                                │
+       this marks the start    │               put an ampersand before a new    │    a comma separated list of short
+       of your color list      │               list starts                      │    words or even some emojis
+                               ▼                                                ▼
+
+               a comma separated list of colors                 this marks the start of your
+               keywords or rgb hex values                       label list
+```
+
 ### Colors & Number of Cards
 
-To change the colors (and number of cards), you need to change a part of the url (aka the website’s _address_). Add a comma-separated list of hexadecimal color values (eg. `000000` for _black_) or [css color keywarods](https://www.w3.org/wiki/CSS/Properties/color/keywords) and Voter will create a card for each color. Here are some examples:
+To change the colors (and number of cards), you need to change a part of the url. Add a comma-separated list of hexadecimal color values (eg. `000000` for _black_) or [css color keywords](https://www.w3.org/wiki/CSS/Properties/color/keywords) and Voter will create a card for each color. Here are some examples:
 
 1. https://reimar.github.io/voter/?colors=black,white — a black and a white card
 2. https://reimar.github.io/voter/?colors=2541F7,F75765,F7C625 — a blue, a red and a yellow card
@@ -36,12 +61,11 @@ Yes. You can also add emojis. Add a list of emojis which will map to your list o
 
 ### Enable Counter Display
 
-If you need to count the voting cards, you can _note_ your counts per card by enabling the counter:
+If you need to count the voting cards, you can _note_ your counts per card by enabling the counter.
 
-1. https://reimar.github.io/voter/?counter — enables the counter with the default cards
-2. https://reimar.github.io/voter/?colors=lightcyan,dodgerblue&counter — or add `&counter` (prefereably) to the end of your custom url
-
-Wipe up or down on the counter to set a count. Once you refresh the page, your count will reset.
+- https://reimar.github.io/voter/?colors=lightcyan,dodgerblue&counter — add `&counter` (prefereably) to the end of your custom url
+- Swipe up or down on the counter to set a count
+- Once you refresh the page, your count will reset.
 
 ## Tips
 
