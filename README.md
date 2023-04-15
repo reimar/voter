@@ -32,7 +32,7 @@ never changes    │             ┌──────────────�
        of your color list      │               list starts                      │    words or even some emojis
                                ▼                                                ▼
 
-               a comma separated list of colors                 this marks the start of your
+               a comma separated list of color                  this marks the start of your
                keywords or rgb hex values                       label list
 ```
 
@@ -59,7 +59,7 @@ Yes. You can also add emojis. Add a list of emojis which will map to your list o
 2. https://reimar.github.io/voter/?colors=black,white&labels=💀,👻 — a black card with a skull emoji and a white card with a ghost emoji
 3. https://reimar.github.io/voter/?colors=2541F7,F75765,F7C625&labels=🏄,,🍔 — a blue card with a surfer emoji, a red card with no emoji and a yellow card with a hamburger emoji
 
-### Enable Counter Display
+### Counter Display
 
 If you need to count the voting cards, you can _note_ your counts per card by enabling the counter.
 
