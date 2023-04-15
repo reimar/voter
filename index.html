@@ -29,33 +29,53 @@
 			}
 
 			.card {
-				height: calc(100vh - calc(100vh - 100%));
-				height: 100dvh;
-				min-width: 100vw;
-				scroll-snap-align: center;
-				display: flex;
 				align-items: center;
+				display: flex;
+				flex-direction: column;
+				height: calc(100vh - calc(100vh - 100%));
+				height: min(100vh, 100dvh);
+				justify-content: center;
+				min-width: 100vw;
 				position: relative;
+				scroll-snap-align: center;
 			}
 
-			.symbol {
-				font-size: 25vw;
+			.counterEnabled .card {
+				justify-content: space-between;
+			}
+
+			.label {
+				align-items: center;
+				display: flex;
+				height: min(100vw, 100vh);
+				justify-content: center;
+				width: min(100vw, 100vh);
+			}
+
+			.characters {
+				display: block;
+				font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+				font-size: min(25vw, 25vh);
+				line-height: 1;
 				text-align: center;
-				width: 100%;
+			}
+
+			.character {
+				filter: invert(1) grayscale(1) contrast(9);
 			}
 
 			.counter {
-				background: #fff;
-				border-radius: 24px;
-				bottom: 40px;
+				background: black;
+				bottom: 0;
 				display: flex;
 				flex-direction: column;
-				left: 40px;
+				height: 33vh;
+				left: 0;
 				overflow: scroll;
-				position: absolute;
-				right: 40px;
+				position: relative;
+				right: 0;
 				scroll-snap-type: y mandatory;
-				top: 55vh;
+				width: 100%;
 			}
 
 			.counter::-webkit-scrollbar {
@@ -63,9 +83,11 @@
 			}
 
 			.counterDigit {
+				filter: invert(1) grayscale(1) contrast(9);
 				font-family: Verdana, Geneva, Tahoma, sans-serif;
-				font-size: 10vh;
+				font-size: min(25vw, 25vh);
 				height: 100%;
+				line-height: 1;
 				scroll-snap-align: center;
 				text-align: center;
 			}
@@ -75,35 +97,46 @@
 		<script>
 			(function () {
 				// settings
+
 				const counterMaxVal = 100;
 
-				// read and interpret url params
-				const urlParams = new URLSearchParams(window.location.search);
+				// setup
 
-				// colors
+				const urlParams = new URLSearchParams(window.location.search);
 				const defaultColors = ["FF6332", "36A800"];
 				const colors = urlParams.has("colors") ? urlParams.get("colors").split(",") : defaultColors;
-
-				// symbols
-				const symbols = urlParams.has("symbols") ? urlParams.get("symbols").split(",") : false;
-
-				// counter
+				const labels = urlParams.has("labels") ? urlParams.get("labels").split(",") : false;
 				const showCounter = urlParams.has("counter") ? true : false;
+				const regexEmoji = /[\p{Extended_Pictographic}\u{1F3FB}-\u{1F3FF}\u{1F9B0}-\u{1F9B3}]/u;
 
 				// create cards
+
 				colors.forEach((color, index) => {
 					let $card = document.createElement("div");
 					let $markup = ``;
+					let bgColor = color.match(/^[0-9a-fA-F]+$/) ? "#" + color : color;
 
 					$card.className = "card";
-					$card.style.backgroundColor = "#" + color;
-					document.body.append($card);
+					$card.style.backgroundColor = bgColor;
+					$card.style.color = bgColor;
 
-					if (symbols) {
-						$markup += `<span class="symbol">${symbols[index]}</span>`;
+					if (labels) {
+						const labelCharacters = [...labels[index]]
+							.map((character) => {
+								return character.match(regexEmoji) ? character : `<span class="character">${character}</span>`;
+							})
+							.join("");
+
+						$markup += `
+							<span class="label">
+								<span class="characters">${labelCharacters}</span>
+							</span>
+						`;
 					}
 
 					if (showCounter) {
+						document.body.classList.add("counterEnabled");
+
 						$markup += `
 							<div class="counter">
 								${(() => {
@@ -120,6 +153,7 @@
 						`;
 					}
 
+					document.body.append($card);
 					$card.innerHTML = $markup;
 				});
 			})();
