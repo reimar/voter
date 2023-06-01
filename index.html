@@ -60,10 +60,6 @@
 				text-align: center;
 			}
 
-			.character {
-				filter: invert(1) grayscale(1) contrast(9);
-			}
-
 			.counter {
 				background: black;
 				bottom: 0;
@@ -96,6 +92,15 @@
 	<body>
 		<script>
 			(function () {
+				/**
+				 *	Create a set of swipeble cards. Use URL parameters
+				 *	to set the number of cards, card colors and optional
+				 *  labels. The text color algorithm was taken from
+				 *  https://24ways.org/2010/calculating-color-contrast/
+				 * 
+				 * 	For further documentation, see README.md
+				 */
+				
 				// settings
 
 				const counterMaxVal = 100;
@@ -115,10 +120,14 @@
 					let $card = document.createElement("div");
 					let $markup = ``;
 					let bgColor = color.match(/^[0-9a-fA-F]+$/) ? "#" + color : color;
+					var r = parseInt(bgColor.substr(0,2), 16);
+					var g = parseInt(bgColor.substr(2,2), 16);
+					var b = parseInt(bgColor.substr(4,2), 16);
+					var yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
 
 					$card.className = "card";
 					$card.style.backgroundColor = bgColor;
-					$card.style.color = bgColor;
+					$card.style.color = (yiq >= 128) ? 'black' : 'white';
 
 					if (labels) {
 						const labelCharacters = [...labels[index]]
